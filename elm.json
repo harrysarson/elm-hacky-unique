@@ -1,6 +1,6 @@
 {
     "type": "package",
-    "name": "harrysarson/hacky-unique",
+    "name": "harrysarson/elm-hacky-unique",
     "summary": "Trick elm into thinking otherwise identical objects are different.",
     "license": "MIT",
     "version": "1.0.0",
