@@ -20,7 +20,7 @@ suite =
             \() ->
                 Unique.unique ()
                     |> Expect.notEqual (Unique.unique ())
-        , test "same object with nested unique value" <|
+        , test "same record with nested unique value" <|
             \() ->
                 let
                     u =
@@ -30,13 +30,29 @@ suite =
                 in
                 u
                     |> Expect.equal u
-        , test "different objects with nested unique values" <|
+        , test "different record with nested unique values" <|
             \() ->
                 let
                     u _ =
                         { a = 16
                         , u = Unique.unique ()
                         }
+                in
+                u ()
+                    |> Expect.notEqual (u ())
+        , test "same custom type with nested unique value" <|
+            \() ->
+                let
+                    u =
+                        Just (Unique.unique ())
+                in
+                u
+                    |> Expect.equal u
+        , test "different custom type with nested unique values" <|
+            \() ->
+                let
+                    u _ =
+                        Just (Unique.unique ())
                 in
                 u ()
                     |> Expect.notEqual (u ())
